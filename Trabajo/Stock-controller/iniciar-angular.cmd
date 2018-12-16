@@ -1,0 +1,3 @@
+
+ng serve --o
+pause
