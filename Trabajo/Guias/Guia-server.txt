@@ -1,0 +1,78 @@
+crear base de datos en postgres
+
+Entrar a la carpeta del proyecto y ejecutar el comando:
+npm init--yes
+Esto va a crear el archivo package.json.
+
+Despues ejecutar el comando
+npm install express sequelize nodemon body-parser multer pg pg-hstore -s
+para instalar las dependencias que vamos a usar (se guardan en package.json)
+a demas crea el package-lock.json (el express)
+y la carpeta node_modules
+
+Crear el archivo index.js (cuando ejecutamos npm init --yes configura como predeterminado este archivo)
+se puede cambiar desde el package.json("main")
+
+En "index.js" se agregan las constantes de express y app
+
+const express = require('express');
+const app = express();
+
+Se agrega la funcion:
+
+app.listen(3000,function() 
+{ 
+    console.log('servidor funcionando!');
+})
+para que el servidor quede escuchando en el puerto 3000
+
+
+agregar configs del servidor
+
+un middleware es body-parser
+para "entender" la informacion que me manda el navegador como json o formularios(urlencoded)
+primero hay que pedirlo/requerirlo
+var bodyparcer = require('body-parser');
+
+y despues se declara que app lo usa
+
+app.use(bodyparcer.json());
+app.use(bodyparcer.urlencoded({extended:true}));
+
+
+var multer = require('multer');
+var upload = multer();
+
+app.use(upload.array());
+
+
+Para trabajar con una base de datos(postgreSQL)
+se requiere el sequelize y se le asigna la ruta de postgres
+
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize("postgres://postgres:postgres@localhost:5432/postgres");
+
+
+evitar errores de XML policy
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE, OPTIONS');
+       next();
+});
+
+Crear clases/entidades
+
+var NombreClase = sequelize.define("URL que llama a la clase", {
+    atributo1: {
+        type: Sequelize.STRING
+    },
+    atributo2:{
+        type: Sequelize.INTEGER
+    }
+})
+
+controlar que se creen las tablas.
+
+sequelize.sync().then(()=>console.log('todas las tablas creadas'));
