@@ -26,3 +26,4 @@ El aumento o el control del numero de las facuras emitidas por otros proveedores
 
 Cuando se inicia la creacion de una nueva factura(de compra o de venta) se genera una nueva factura "null" en la base de datos y luego se completa al finalizar y guardad la factura actual. Esto es asi para poder utilizar el "id" de la factura para relacionarla con los items agregados en la factura.
 
+
