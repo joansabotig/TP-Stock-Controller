@@ -29,4 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-El aumento o el control del numero de las facuras emitidas por otros proveedores o por otras empresas son controladas por los que la emiten.
+
