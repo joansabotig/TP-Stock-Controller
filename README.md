@@ -15,6 +15,8 @@ Dentro de la carpeta "guias" se encuentras unas pequeñas guias que escribi mien
 Esta es una aplicacion Angular para el control y el manejo de Stock.
 Se utiliza un api Rest express con sequalize
 En esta aplicacion se utiliza una base de datos PostgreSQL (puede cambiarse en el string de coneccion)
+En la pestaña de "info" está la opcion para agregar datos a la base de datos para pruebas del servidor,
+y tambien el boton de limpieza de la base de datos para borrar toda la informacion.
 
 
 **extras y detalles del funcionamiento de la aplicacion**
